@@ -1,0 +1,7 @@
+name = "DistanceSimilarity"
+uuid = "12f25ba9-8629-4532-91ae-31e5caf071d7"
+authors = ["Lucas Garcia"]
+version = "0.1.0"
+
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
