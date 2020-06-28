@@ -1,17 +1,24 @@
 module DistanceSimilarity
+
 import LinearAlgebra:norm
+
 function euclidean(x, y)
+
     if length(x) != length(y)
         throw(ArgumentError("The vectors must be the same size"))
     end
+
     valor = 0
+
     for i = 1:length(x)
         valor += (x[i] - y[i])^2
     end
+
     sqrt(valor)
-end
+end #euclidean
 
 function manhattan(x, y)
+
     if length(x) != length(y)
         throw(ArgumentError("The vectors must be the same size"))
     end
@@ -21,25 +28,30 @@ function manhattan(x, y)
     for i = 1:length(x)
         valor += norm(x[i] - y[i])
     end
+
     valor
-end
+end #manhattan
 
 function jaccard(x, y)
+
     if length(x) != length(y)
         throw(ArgumentError("The vectors must be the same size"))
     end
 
     norm(length(intersect(x,y)) / length(union(x, y)))
-end
+end #jaccard
 
 function cosine(x, y)
+
     if length(x) != length(y)
         throw(ArgumentError("The vectors must be the same size"))
     end
-    scalar, xSquared, ySquared  = x .* y, x .^ 2, y .^ 2
-    sum(scalar)/(sqrt(sum(xSquared))*sqrt(sum(ySquared)))
-end
-x = [1, 1]
-y = [1, 1]
-cosine(x, y)
+
+    scalar   = x .* y
+    xSquared = x .^ 2
+    ySquared = y .^ 2
+
+    sum(scalar) / (sqrt(sum(xSquared)) * sqrt(sum(ySquared)))
+end #cosine
+
 end # module
