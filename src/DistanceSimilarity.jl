@@ -2,10 +2,12 @@ module DistanceSimilarity
 
 import LinearAlgebra:norm
 
-export euclidean, manhattan, cosine, jaccard
+export cosine, checkInput, euclidean, manhattan, jaccard
 
 """
-checkInput checks if arrays have the same length and if they aren't empty
+checkInput(arr1::AbstractArray, arr2::AbstractArray)
+
+Checks if arrays have the same length and if they aren't empty
 """
 function checkInput(arr1::AbstractArray, arr2::AbstractArray)
 
@@ -18,11 +20,10 @@ function checkInput(arr1::AbstractArray, arr2::AbstractArray)
     end
 end
 
-
-
 """
-euclidean receive 2 1-D arrays and returns the euclidean distance(float)
-between the arrays
+euclidean(arr1::AbstractArray, arr2::AbstractArray)
+
+Returns the euclidean distance between the arrays
 
     Example:
         array1 = [1, 2, 3]
@@ -38,8 +39,9 @@ function euclidean(arr1::AbstractArray, arr2::AbstractArray)
 end
 
 """
-manhattan receive 2 1-D vectors and returns the manhattan distance(float)
-between the arrays
+manhattan(arr1::AbstractArray, arr2::AbstractArray)
+
+Returns the manhattan distance between the arrays
 
     Example:
         array1 = [1, 2, 3]
@@ -53,12 +55,13 @@ function manhattan(arr1::AbstractArray, arr2::AbstractArray)
 
     sum(norm(arr1 - arr2))
 
-end #manhattan
+end
 
 
 """
-jaccard receive 2 1-D arrays and returns the jaccard similarity (float)
-between the arrays
+jaccard(arr1::AbstractArray, arr2::AbstractArray)
+
+Returns the jaccard similarity between the arrays
 
     Example:
         array1 = [1, 2, 3]
@@ -72,11 +75,12 @@ function jaccard(arr1::AbstractArray, arr2::AbstractArray)
 
     norm(length(intersect(arr1,arr2)) / length(union(arr1, arr2)))
 
-end #jaccard
+end
 
 """
-Cosine function receive 2 1-D vectors and returns the cosine similarity(float)
-between the arrays
+cosine(arr1::AbstractArray, arr2::AbstractArray)
+
+Returns the cosine similarity between the arrays
     Example:
         array1 = [1, 2, 3]
         array2 = [2, 1, 3]
@@ -92,8 +96,6 @@ function cosine(arr1::AbstractArray, arr2::AbstractArray)
     ySquared = arr2 .^ 2
 
     sum(scalar) / (sqrt(sum(xSquared)) * sqrt(sum(ySquared)))
-end #cosine
+end
 
-
-
-end # module
+end
