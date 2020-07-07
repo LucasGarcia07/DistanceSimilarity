@@ -7,17 +7,14 @@ export cosine, checkInput, euclidean, manhattan, jaccard
 """
 checkInput(arr1::AbstractArray, arr2::AbstractArray)
 
-Checks if arrays have the same length and if they aren't empty
+Checks if arrays have the same length
 """
-function checkInput(arr1::AbstractArray, arr2::AbstractArray)
+function checkInput(arr1::AbstractArray{T, 1}, arr2::AbstractArray{T, 1})where T<:Number
 
     if length(arr1) != length(arr2)
         throw(DimensionMismatch("Arrays must have the same length"))
     end
 
-    if isempty(arr1) | isempty(arr2)
-        throw(DimensionMismatch("Arrays can't be empty"))
-    end
 end
 
 """
@@ -30,7 +27,7 @@ Returns the euclidean distance between the arrays
         array2 = [2, 1, 3]
         euclidean(array1, array2)
 """
-function euclidean(arr1::AbstractArray, arr2::AbstractArray)
+function euclidean(arr1::AbstractArray{T, 1}, arr2::AbstractArray{T, 1}) where T<:Number
 
     checkInput(arr1, arr2)
 
@@ -49,7 +46,7 @@ Returns the manhattan distance between the arrays
         manhattan(array1, array2)
 """
 
-function manhattan(arr1::AbstractArray, arr2::AbstractArray)
+function manhattan(arr1::AbstractArray{T, 1}, arr2::AbstractArray{T, 1}) where T<:Number
 
     checkInput(arr1, arr2)
 
@@ -69,7 +66,7 @@ Returns the jaccard similarity between the arrays
         jaccard(array1, array2)
 """
 
-function jaccard(arr1::AbstractArray, arr2::AbstractArray)
+function jaccard(arr1::AbstractArray{T, 1}, arr2::AbstractArray{T, 1}) where T<:Number
 
     checkInput(arr1, arr2)
 
@@ -87,7 +84,7 @@ Returns the cosine similarity between the arrays
         cosine(array1, array2)
 """
 
-function cosine(arr1::AbstractArray, arr2::AbstractArray)
+function cosine(arr1::AbstractArray{T, 1}, arr2::AbstractArray{T, 1}) where T<:Number
 
     checkInput(arr1, arr2)
 
