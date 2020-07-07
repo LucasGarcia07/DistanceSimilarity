@@ -1,3 +1,3 @@
 using Documenter, DistanceSimilarity
 
-makedocs(sitename = "Documentation")
+makedocs(modules = Module[DistanceSimilarity],sitename = "DistanceSimilarity.jl")
